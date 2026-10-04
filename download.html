@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEN X Terminal — Download for Android | Created by finex</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --terminal-bg: #030712;
+      --accent: #00ff88;
+      --accent-glow: rgba(0, 255, 136, 0.4);
+      --cyan: #00d2ff;
+      --purple: #b388ff;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border: #1f2937;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    nav {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: monospace;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo span {
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid var(--accent);
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .author-badge {
+      font-size: 0.85rem;
+      color: var(--cyan);
+      font-family: monospace;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 0 40px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(0, 210, 255, 0.1);
+      border: 1px solid var(--cyan);
+      border-radius: 9999px;
+      color: var(--cyan);
+      font-size: 0.85rem;
+      font-family: monospace;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #ffffff 40%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.lead {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 36px;
+    }
+
+    /* Download Button */
+    .download-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 50px;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #00ff88 0%, #00b050 100%);
+      color: #000000;
+      font-weight: 800;
+      font-size: 1.25rem;
+      padding: 18px 42px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px var(--accent-glow);
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0, 255, 136, 0.6);
+    }
+
+    .download-meta {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Web Terminal Interactive Demo */
+    .terminal-window {
+      background: var(--terminal-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      overflow: hidden;
+      margin: 40px 0 60px;
+      text-align: left;
+    }
+
+    .terminal-header {
+      background: #111827;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-title {
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-left: 10px;
+    }
+
+    .terminal-body {
+      padding: 20px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.95rem;
+      min-height: 280px;
+      max-height: 380px;
+      overflow-y: auto;
+      color: var(--text);
+    }
+
+    .t-ascii {
+      color: var(--accent);
+      font-weight: bold;
+      white-space: pre;
+      margin-bottom: 12px;
+      font-size: 0.8rem;
+      line-height: 1.2;
+    }
+
+    .t-prompt {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .t-path {
+      color: var(--cyan);
+    }
+
+    .t-flint {
+      color: var(--purple);
+      font-weight: bold;
+    }
+
+    .terminal-input-row {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .web-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: monospace;
+      font-size: 0.95rem;
+      flex: 1;
+      margin-left: 8px;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 255, 136, 0.3);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Installation Steps */
+    .install-box {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 60px;
+    }
+
+    .install-box h2 {
+      margin-bottom: 16px;
+      color: var(--accent);
+      font-family: monospace;
+    }
+
+    .install-box ol {
+      padding-left: 20px;
+      color: var(--text-muted);
+    }
+
+    .install-box li {
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .t-ascii { font-size: 0.55rem; }
+      .download-btn { width: 100%; font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Navbar -->
+    <nav>
+      <a href="#" class="logo">
+        ZEN X <span>v2.4</span>
+      </a>
+      <div class="author-badge">
+        Created by <strong>finex</strong>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="pill">⚡ LINUX TERMINAL ENVIRONMENT FOR ANDROID</div>
+      <h1>Power of Termux.<br>Intelligence of Flint AI.</h1>
+      <p class="lead">
+        A full Linux shell for Android with real package management, GitHub cloning, Python/Node runtime, and the built-in Flint AI assistant.
+      </p>
+
+      <!-- 1-Click Download Button -->
+      <div class="download-container">
+        <a href="ZEN-X.apk" download="ZEN-X.apk" class="download-btn" id="dlBtn">
+          📥 Download ZEN-X.apk (Direct 23 MB)
+        </a>
+        <div class="download-meta">
+          Compatible with Android 7.0 to Android 15 • Direct offline APK • Architecture: aarch64
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Interactive Web Terminal Preview -->
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span class="terminal-title">zenx@android:~ (Interactive Web Demo)</span>
+      </div>
+      <div class="terminal-body" id="termBody">
+        <div class="t-ascii">
+ ███████╗███████╗███╗   ██╗    ██╗  ██╗
+ ╚══███╔╝██╔════╝████╗  ██║    ╚██╗██╔╝
+   ███╔╝ █████╗  ██╔██╗ ██║     ╚███╔╝ 
+  ███╔╝  ██╔══╝  ██║╚██╗██║     ██╔██╗ 
+ ███████╗███████╗██║ ╚████║    ██╔╝ ██╗
+ ╚══════╝╚══════╝╚═╝  ╚════╝    ╚═╝  ╚═╝</div>
+        <div>* Welcome to ZEN X Android Terminal Web Console</div>
+        <div>* Created by: <strong>finex</strong> (finexcreates@gmail.com)</div>
+        <div>* Try typing: <span style="color:#00ff88">help</span>, <span style="color:#00ff88">pkg install git</span>, <span style="color:#b388ff">pkg open flint</span>, or <span style="color:#00d2ff">neofetch</span> below:</div>
+        <div id="termLogs"></div>
+        <div class="terminal-input-row">
+          <span class="t-prompt">zenx@android:<span class="t-path">~</span>$</span>
+          <input type="text" id="termInput" class="web-input" placeholder="Type a command and press Enter..." autofocus autocomplete="off" autocorrect="off">
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="features-grid">
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h3>Package Manager</h3>
+        <p>Run <code>pkg install git</code>, <code>python</code>, <code>node</code>, <code>neofetch</code>, <code>tree</code>, <code>cowsay</code> with real progress indicators and dependency setups.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Flint AI Inside Terminal</h3>
+        <p>Type <code>pkg open flint</code> to chat with Flint AI directly in your prompt. Powered by Gemini for instant coding and shell help.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🐙</div>
+        <h3>Real Git Cloning</h3>
+        <p>Clone real GitHub repositories straight to your device: <code>git clone https://github.com/octocat/Hello-World</code>.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>Nano & Interpreters</h3>
+        <p>Edit files with the interactive Nano text editor, run Python scripts, execute JavaScript, or query live weather.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⌨️</div>
+        <h3>Termux Quick Keys</h3>
+        <p>Special mobile keyboard bar with ESC, TAB, CTRL, ALT, ~, /, -, |, and history navigation arrows.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <h3>Multi-Session & Themes</h3>
+        <p>Zen Dark, Matrix Green, Cyberpunk, Monokai, and Hacker Amber themes with multi-tab session support.</p>
+      </div>
+    </div>
+
+    <!-- How to install -->
+    <div class="install-box">
+      <h2>📲 How to Install ZEN X on Android</h2>
+      <ol>
+        <li>Click the big green <strong>"Download ZEN-X.apk"</strong> button above.</li>
+        <li>Once downloaded, open the <code>ZEN-X.apk</code> file from your browser downloads or file manager.</li>
+        <li>If prompted, enable <em>"Allow installation from this source"</em> in your Android settings.</li>
+        <li>Tap <strong>Install</strong> and open <strong>ZEN X</strong> to start your terminal session!</li>
+      </ol>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>ZEN X Terminal — Designed & Created by <strong>finex</strong></p>
+      <p style="margin-top: 8px;">Contact: <a href="mailto:finexcreates@gmail.com">finexcreates@gmail.com</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Interactive web terminal demo
+    const input = document.getElementById('termInput');
+    const logs = document.getElementById('termLogs');
+    const termBody = document.getElementById('termBody');
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const cmd = this.value.trim();
+        if (!cmd) return;
+
+        // Log prompt
+        const promptLine = document.createElement('div');
+        promptLine.innerHTML = `<span class="t-prompt">zenx@android:<span class="t-path">~</span>$</span> ${escapeHtml(cmd)}`;
+        logs.appendChild(promptLine);
+
+        // Process response
+        processCommand(cmd);
+
+        this.value = '';
+        termBody.scrollTop = termBody.scrollHeight;
+      }
+    });
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function addLog(text, color = '#e5e7eb') {
+      const line = document.createElement('div');
+      line.style.color = color;
+      line.innerHTML = text;
+      logs.appendChild(line);
+      termBody.scrollTop = termBody.scrollHeight;
+    }
+
+    function processCommand(raw) {
+      const c = raw.toLowerCase().trim();
+
+      if (c === 'clear') {
+        logs.innerHTML = '';
+        return;
+      }
+
+      if (c === 'help') {
+        addLog(`Commands available:
+  • pkg install &lt;git|python|node|neofetch|cowsay&gt;
+  • pkg open flint (or flint)
+  • git clone &lt;repo_url&gt;
+  • ls, cat, mkdir, touch, tree, nano
+  • neofetch, cowsay, weather, calc`, '#00d2ff');
+        return;
+      }
+
+      if (c.startsWith('pkg install git')) {
+        addLog('Reading package lists... Done', '#9ca3af');
+        addLog('Building dependency tree... Done', '#9ca3af');
+        addLog('Get:1 https://packages.zenx.org/apt/main aarch64 git [14.8 MB]', '#00d2ff');
+        addLog('Unpacking git (2.43.0)...', '#9ca3af');
+        addLog('Setting up git... Package git successfully installed! ✨', '#00ff88');
+        return;
+      }
+
+      if (c === 'pkg open flint' || c === 'flint') {
+        addLog('⚡ FLINT AI TERMINAL ASSISTANT v1.0.0', '#b388ff');
+        addLog('Flint: Hello! I am Flint, your AI companion in ZEN X created by finex.', '#b388ff');
+        addLog('Ask me anything or install the APK to run me on your Android device!', '#b388ff');
+        return;
+      }
+
+      if (c.startsWith('git clone')) {
+        addLog(`Cloning repository into local filesystem...`, '#9ca3af');
+        addLog(`remote: Enumerating objects: 100%, done.`, '#9ca3af');
+        addLog(`Receiving objects: 100%, done.`, '#9ca3af');
+        addLog(`Successfully cloned repository into directory!`, '#00ff88');
+        return;
+      }
+
+      if (c === 'neofetch') {
+        addLog(`       .---.            zenx@android
+      /     \\           ------------
+     | () () |          OS: ZEN X Linux / Android 15
+      \\  _  /           Creator: finex
+       /   \\            Uptime: 42m 10s
+      /|   |\\           Packages: 14 (pkg)
+     ( |   | )          Shell: bash-zenx 2.4.0
+      \\ '---' /          Terminal: ZEN X Console`, '#00ff88');
+        return;
+      }
+
+      if (c.startsWith('cowsay')) {
+        const msg = raw.replace(/^cowsay\s*/i, '') || "ZEN X by finex!";
+        addLog(` _______
+&lt; ${escapeHtml(msg)} &gt;
+ -------
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||`, '#00ff88');
+        return;
+      }
+
+      if (c === 'ls') {
+        addLog('projects/  hello.py  README.txt  welcome.sh', '#00d2ff');
+        return;
+      }
+
+      if (c.startsWith('echo')) {
+        addLog(escapeHtml(raw.replace(/^echo\s*/i, '')));
+        return;
+      }
+
+      addLog(`bash: ${escapeHtml(raw)}: command not found. Type 'help' for available commands.`, '#ef4444');
+    }
+  </script>
+</body>
+</html>
