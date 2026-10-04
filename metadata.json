@@ -1,0 +1,6 @@
+{
+  "name": "ZEN X",
+  "description": "Advanced Linux terminal environment for Android with package management, Git cloning, offline shell utilities, and Flint AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
