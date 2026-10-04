@@ -9,6 +9,21 @@
  ╚══════╝╚══════╝╚═╝  ╚════╝    ╚═╝  ╚═╝
 ```
 
+<div align="center">
+
+### ⚡ One-Click Easy Download & Live Launch
+
+[![Download ZEN X](https://img.shields.io/badge/📥_DOWNLOAD_APP-ZEN_X_FOR_ANDROID-00E676?style=for-the-badge&logo=android&logoColor=000000)](https://ais-pre-pyr2zqa6fbmtef4gwxpgn5-552144887852.asia-southeast1.run.app)
+[![Launch Live Preview](https://img.shields.io/badge/🚀_LAUNCH_APP-LIVE_EMULATOR-00B0FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://ais-pre-pyr2zqa6fbmtef4gwxpgn5-552144887852.asia-southeast1.run.app)
+
+**👉 [CLICK HERE TO DOWNLOAD / OPEN ZEN X IMMEDIATELY](https://ais-pre-pyr2zqa6fbmtef4gwxpgn5-552144887852.asia-southeast1.run.app) 👈**
+
+*Instant access: Run the full terminal in the cloud streaming emulator or export APK directly from the Settings menu!*
+
+---
+
+</div>
+
 > **ZEN X** is an advanced, fully functional Linux-like terminal emulator for Android, built with Jetpack Compose, featuring an embedded package manager, real GitHub cloning, Linux toolchain utilities, and the **Flint AI** terminal assistant.
 
 ---
@@ -114,6 +129,15 @@ nano hello.py
    zenx@android:~$ pkg install neofetch
    zenx@android:~$ neofetch
    ```
+
+---
+
+## 📲 How to Download & Install APK on Android
+
+1. Click the **[Download App Button](https://ais-pre-pyr2zqa6fbmtef4gwxpgn5-552144887852.asia-southeast1.run.app)**.
+2. In the AI Studio interface, open the **Settings / Export** menu in the top-right toolbar.
+3. Select **"Download APK"** (or **"Export as ZIP"** to inspect the source code).
+4. Transfer or open the `.apk` file on your Android device to install and launch **ZEN X**!
 
 ---
 
