@@ -11,14 +11,15 @@
 
 <div align="center">
 
-### ⚡ One-Click Easy Download & Live Launch
+### ⚡ One-Click Easy Download
 
-[![Download ZEN X](https://img.shields.io/badge/📥_DOWNLOAD_APP-ZEN_X_FOR_ANDROID-00E676?style=for-the-badge&logo=android&logoColor=000000)](https://ais-pre-pyr2zqa6fbmtef4gwxpgn5-552144887852.asia-southeast1.run.app)
-[![Launch Live Preview](https://img.shields.io/badge/🚀_LAUNCH_APP-LIVE_EMULATOR-00B0FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://ais-pre-pyr2zqa6fbmtef4gwxpgn5-552144887852.asia-southeast1.run.app)
+[![Direct Download APK](https://img.shields.io/badge/📥_DOWNLOAD-ZEN--X.apk_(23MB)-00E676?style=for-the-badge&logo=android&logoColor=000000)](./ZEN-X.apk?raw=true)
+[![Open App in Browser](https://img.shields.io/badge/🚀_LAUNCH-LIVE_APP-00B0FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://ais-pre-pyr2zqa6fbmtef4gwxpgn5-552144887852.asia-southeast1.run.app)
 
-**👉 [CLICK HERE TO DOWNLOAD / OPEN ZEN X IMMEDIATELY](https://ais-pre-pyr2zqa6fbmtef4gwxpgn5-552144887852.asia-southeast1.run.app) 👈**
+## 📲 [👉 CLICK TO DOWNLOAD ZEN-X.apk DIRECTLY 👈](./ZEN-X.apk?raw=true)
 
-*Instant access: Run the full terminal in the cloud streaming emulator or export APK directly from the Settings menu!*
+**The compiled `.apk` file is located right in the repository root: `ZEN-X.apk`**  
+*One-click direct file download — no extra tools required!*
 
 ---
 
